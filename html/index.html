@@ -6,42 +6,49 @@
     <link rel="stylesheet" href="/style/styles.css">
 </head>
 <body>
-    <!-- Шапка сайта -->
-    <header>
-        <div class="container header-container">
-            <!--ЛОГОТИП -->
+
+    <div class="wrapper">
+        
+        <!--  Шапка и Навигация -->
+        <header class="sidebar">
             <div class="logo">Anime<span>catalog</span></div>
 
-            <!-- навігація -->
             <nav class="main-nav">
-                <ul class="nav-list"></ul>
+                <h3 class="nav-title">Навігація по сайту</h3>
+                <ul class="nav-list">
                     <li><a href="#" class="active">Головна</a></li>
                     <li><a href="#">Аніме</a></li>
+                    <li><a href="#">Манхва</a></li>
                     <li><a href="#">Манга</a></li>
                     <li><a href="#">Контакти</a></li>
                 </ul>
             </nav>
-        </div>
-    </header>
+        </header>
 
-    <!-- Головний контент -->
-    <main class="container main-content">
-        <h1 class="page-title">Каталог аніме</h1>
-    <div class="filter_buttons">
-            <button class="btn-filter active" data-genre="all">Усі жанри</button>
-            <button class="btn-filter" data-genre="Екшн">Екшн</button>
-            <button class="btn-filter" data-genre="Драма">Драма</button>
-            <button class="btn-filter" data-genre="Сьонен">Сьонен</button>
+        <!-- Основной контент -->
+        <div class="main-wrapper">
+            <main class="main-content">
+                <h1 class="page-title">Каталог аніме</h1>
+                
+                <div class="filter-buttons">
+                    <button class="btn-filter active" data-genre="all">Усі жанри</button>
+                    <button class="btn-filter" data-genre="Екшн">Екшн</button>
+                    <button class="btn-filter" data-genre="Драма">Драма</button>
+                    <button class="btn-filter" data-genre="Сьонен">Сьонен</button>
+                </div>
+                
+                <div id="anime-grid" class="anime-grid">
+                    <!-- Карточки сюда добавятся через ваш JavaScript -->
+                </div>
+            </main>
+
+            <!-- Подвал  -->
+            <footer class="site-footer">
+                <p>&copy; 2026 Animecatalog. Всі права захищені.</p>
+            </footer>
+        </div>
+
     </div>
-        <div id="anime-grid" class="anime-grid"></div>
-    </main>
-
-    <!--подвальчик-->
-    <footer class="site-footer">
-        <div class="container">
-            <p>&copy; 2026 Animecatalog. Всі права захищені.</p>
-        </div>
-    </footer>
 
     <script src="/java_s/main.js"></script>
 </body>

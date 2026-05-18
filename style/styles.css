@@ -1,19 +1,103 @@
+/* Общие стили для темной темы */
+body {
+    background-color: #212124;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Главный контейнер-флекс */
+.wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Левая панель меню (Sidebar) */
+.sidebar {
+    width: 260px;
+    background-color: #1a1a1e;
+    border-right: 1px solid #29292e;
+    padding: 30px 20px;
+    box-sizing: border-box;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 40px;
+}
+
+.logo span {
+    color: #ff4757;
+}
+
+.nav-title {
+    font-size: 14px;
+    color: #a8a8b3;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-list li {
+    margin-bottom: 12px;
+}
+
+.nav-list a {
+    color: #a8a8b3;
+    text-decoration: none;
+    font-size: 16px;
+    display: block;
+    transition: color 0.2s ease;
+}
+
+.nav-list a:hover, 
+.nav-list a.active {
+    color: #ff4757;
+}
+
+/*  (Контент + Футер) */
+.main-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #2d2d30;
+}
+
+.main-content {
+    padding: 40px;
+    flex: 1;
+}
+
+.page-title {
+    font-size: 32px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* --- стили --- */
 .anime-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 30px;
 }
+
 .anime-card {
     background-color: #1a1a1e;
     border: 1px solid #29292e;
     border-radius: 8px;
     overflow: hidden;
-
     display: flex;
     flex-direction: column;
-
     height: 480px;
-
     transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
@@ -24,8 +108,7 @@
 
 .anime-description {
     font-size: 14px;
-    color:#a8a8b3;
-
+    color: #a8a8b3;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
@@ -74,4 +157,13 @@
     color: #ffffff;
     border-color: #ff4757;
     box-shadow: 0 4px 8px rgba(255, 71, 87, 0.2);
+}
+
+/* Стили подвала */
+.site-footer {
+    padding: 20px 40px;
+    background-color: #1a1a1e;
+    border-top: 1px solid #29292e;
+    color: #a8a8b3;
+    font-size: 14px;
 }
