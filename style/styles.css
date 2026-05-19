@@ -167,3 +167,8 @@ body {
     color: #a8a8b3;
     font-size: 14px;
 }
+.site-footer a {
+    color: #a8a8b3;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
