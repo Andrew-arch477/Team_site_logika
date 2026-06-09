@@ -176,3 +176,100 @@ body {
     color: #ff4757;
 }
 
+/* Оформлюємо наше вспливаюче вікно */
+.modal {
+    display: none; /* Спочатку вікно сховане */
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); /* Затемнення фону сторінки */
+    backdrop-filter: blur(5px); /* Ефект розмиття заднього фону */
+    overflow-y: auto;
+}
+
+/* Контентна частина вікна */
+.modal-content {
+    background-color: #1a1a1e;
+    margin: 50px auto;
+    padding: 0; /* Прибираємо внутрішні відступи, щоб картинка була на весь верх */
+    border: 1px solid #ff4757;
+    width: 90%;
+    max-width: 800px;
+    border-radius: 12px;
+    position: relative;
+    animation: fadeIn 0.3s ease; /* Додаємо плавну появу */
+    overflow: hidden; /* Щоб картинка не виходила за закруглені краї */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Кнопка закриття (хрестик) */
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    color: #a8a8b3;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: #ff4757;
+}
+
+/* Стиль для кнопки пошуку на Анілібрії */
+.btn-anilibria {
+    display: inline-block;
+    background-color: #ff4757;
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* --- Нові стилі для горизонтального банера --- */
+
+/* Контейнер для картинки зверху */
+.modal-banner {
+    position: relative;
+    width: 100%;
+    height: 350px; /* Ти можеш змінити висоту банера тут */
+}
+
+.modal-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Це важливо: картинка заповнить весь блок не деформуючись */
+    display: block;
+}
+
+/* Затемнення картинки знизу та розміщення заголовка */
+.modal-banner-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 30px 20px 30px;
+    background: linear-gradient(to top, rgba(26, 26, 30, 1), rgba(26, 26, 30, 0)); /* Плавне затемнення до чорного */
+    box-sizing: border-box;
+}
+
+.modal-banner-overlay h2 {
+    margin: 0;
+    font-size: 28px;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Додаємо тінь тексту для кращої читаємості */
+}
+
+/* Блок з текстом під картинкою */
+.modal-info-content {
+    padding: 20px 30px 30px 30px; /* Повертаємо відступи для тексту */
+}

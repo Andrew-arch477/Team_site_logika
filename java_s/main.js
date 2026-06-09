@@ -8,6 +8,11 @@ let currentFilter = { type: 'all', value: null };
 const animeGrid = document.getElementById('anime-grid');
 const filterButtons = document.querySelectorAll('.btn-filter');
 
+// Знаходимо елементи нашого вікна в документі
+const modal = document.getElementById('anime-modal');
+const modalBody = document.getElementById('modal-body');
+const closeBtn = document.querySelector('.close-btn');
+
 async function fetchAnime(append = false) {
     if (isLoading || !hasMore) return;
 
@@ -89,6 +94,61 @@ async function fetchAnime(append = false) {
     }
 }
 
+// Ця функція створює вміст вікна та відкриває його
+function showAnimeDetails(anime) {
+    const searchTitle = anime.title_english || anime.title;
+    const imageUrl = anime.images?.jpg?.large_image_url || anime.images?.jpg?.image_url;
+    
+    // Тут ми формуємо посилання для пошуку на сайті Anilibria
+    const anilibriaSearchUrl = `https://www.anilibria.tv/release/search?search=${encodeURIComponent(searchTitle)}`;
+
+    // Наповнюємо вікно детальною інформацією
+    modalBody.innerHTML = `
+        <!-- Початок блоку з банером (картинка зверху) -->
+        <div class="modal-banner">
+            <img src="${imageUrl}" alt="${searchTitle}">
+            <div class="modal-banner-overlay">
+                <h2>${searchTitle}</h2>
+            </div>
+        </div>
+        <!-- Кінець блоку з банером -->
+
+        <!-- Початок блоку з текстовою інформацією знизу -->
+        <div class="modal-info-content">
+            <p><strong>Оригінальна назва:</strong> ${anime.title_japanese || '-'}</p>
+            <p><strong>Рейтинг:</strong> ⭐️ ${anime.score || 'N/A'}</p>
+            <p><strong>Статус:</strong> ${anime.status || 'Невідомо'}</p>
+            <p><strong>Епізоди:</strong> ${anime.episodes || '?'}</p>
+            <p><strong>Жанри:</strong> ${anime.genres?.map(g => g.name).join(', ') || 'Не вказано'}</p>
+            <h4 style="margin-bottom: 10px;">Опис:</h4>
+            <p style="line-height: 1.6; color: #ccc;">${anime.synopsis || 'Опис відсутній.'}</p>
+            
+            <a href="${anilibriaSearchUrl}" target="_blank" class="btn-anilibria">
+                Дивитись на Anilibria
+            </a>
+        </div>
+        <!-- Кінець блоку з текстом -->
+    `;
+
+    // Робимо вікно видимим
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden'; // Вимикаємо прокрутку сторінки, поки вікно відкрите
+}
+
+// Закриваємо вікно при натисканні на хрестик
+closeBtn.onclick = () => {
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto'; // Повертаємо прокрутку
+};
+
+// Закриваємо вікно, якщо натиснути просто на темний фон навколо
+window.onclick = (event) => {
+    if (event.target == modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+};
+
 function renderAnime(animeList) {
     animeList.forEach(anime => {
         const searchTitle = anime.title_english || anime.title;
@@ -97,6 +157,15 @@ function renderAnime(animeList) {
 
         const card = document.createElement('div');
         card.className = 'anime-card';
+        card.style.cursor = 'pointer'; // Додаємо курсор-руку, щоб було зрозуміло, що можна клікнути
+        
+        // Коли натискаємо на картку — відкриваємо деталі
+        card.onclick = (e) => {
+            // Перевіряємо, щоб клік був не по кнопці "Дивитись" (щоб не відкривати два вікна відразу)
+            if (!e.target.classList.contains('btn-more')) {
+                showAnimeDetails(anime);
+            }
+        };
         
         card.innerHTML = `
             <div style="height: 250px; overflow: hidden; position: relative;">
