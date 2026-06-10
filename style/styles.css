@@ -274,8 +274,7 @@ body {
     padding: 20px 30px 30px 30px; /* Повертаємо відступи для тексту */
 }
 
-.hero-section
- {
+.hero-section{
     margin: 0 auto;
     border-radius: 32px;
     padding: 40px;
@@ -292,6 +291,9 @@ body {
     font-weight: 600;
     line-height: 145%;
     max-width: 460px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .logo_2 {
@@ -299,6 +301,8 @@ body {
     font-weight: bold;
     color: #ffffff;
     margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .logo_2 span {
