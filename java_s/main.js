@@ -19,7 +19,7 @@ async function fetchAnime(append = false) {
     isLoading = true;
 
     if (!append) {
-        animeGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 20px;">Завантаження каталогу...</p>';
+        animeGrid.innerHTML = '';
         currentPage = 1;
     } else {
         const loader = document.createElement('div');
@@ -100,7 +100,7 @@ function showAnimeDetails(anime) {
     const imageUrl = anime.images?.jpg?.large_image_url || anime.images?.jpg?.image_url;
     
     // Тут ми формуємо посилання для пошуку на сайті Anilibria
-    const anilibriaSearchUrl = `https://www.anilibria.tv/release/search?search=${encodeURIComponent(searchTitle)}`;
+    const anilibriaSearchUrl = `https://www.crunchyroll.com/search?q=${encodeURIComponent(searchTitle)}`;
 
     // Наповнюємо вікно детальною інформацією
     modalBody.innerHTML = `
@@ -124,7 +124,7 @@ function showAnimeDetails(anime) {
             <p style="line-height: 1.6; color: #ccc;">${anime.synopsis || 'Опис відсутній.'}</p>
             
             <a href="${anilibriaSearchUrl}" target="_blank" class="btn-anilibria">
-                Дивитись на Anilibria
+                Дивитись
             </a>
         </div>
         <!-- Кінець блоку з текстом -->
